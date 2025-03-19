@@ -1,1 +1,16 @@
+com/weather/weatherapp/model/WeatherResponse$Wind.class
+com/weather/weatherapp/model/CityRequest.class
+com/weather/weatherapp/config/OpenWeatherApiConfig.class
+com/weather/weatherapp/model/WeatherResponse.class
 com/weather/weatherapp/WeatherApplication.class
+com/weather/weatherapp/model/WeatherData.class
+com/weather/weatherapp/service/WeatherService.class
+com/weather/weatherapp/exception/LocationNotFoundException.class
+com/weather/weatherapp/model/WeatherResponse$Main.class
+com/weather/weatherapp/model/OpenWeatherResponse.class
+com/weather/weatherapp/exception/ServiceException.class
+com/weather/weatherapp/model/OpenWeatherResponse$Main.class
+com/weather/weatherapp/config/WebConfig.class
+com/weather/weatherapp/controller/WeatherController.class
+com/weather/weatherapp/model/OpenWeatherResponse$Wind.class
+com/weather/weatherapp/model/GeoLocation.class

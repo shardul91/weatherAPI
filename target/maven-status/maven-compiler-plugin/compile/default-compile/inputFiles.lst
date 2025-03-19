@@ -1,1 +1,12 @@
 /Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/WeatherApplication.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/config/OpenWeatherApiConfig.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/config/WebConfig.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/controller/WeatherController.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/exception/LocationNotFoundException.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/exception/ServiceException.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/model/CityRequest.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/model/GeoLocation.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/model/OpenWeatherResponse.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/model/WeatherData.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/model/WeatherResponse.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/service/WeatherService.java
