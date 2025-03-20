@@ -28,22 +28,26 @@ public class WeatherController {
 
     @PostMapping
     public String getWeather(
-            @Valid @ModelAttribute("request") CityRequest request,
-            BindingResult bindingResult,
+            @Valid @ModelAttribute CityRequest request,
+            BindingResult result,
+            @CookieValue(defaultValue = "metric") String unit,
             Model model
     ) {
-        if (bindingResult.hasErrors()) {
+        if (result.hasErrors()) {
             return "weather";
         }
 
         try {
-            WeatherData data = weatherService.getCurrentWeather(request.getCityName());
+            WeatherData data = weatherService.getCurrentWeather(
+                    request.getCityName(),
+                    unit
+            );
             model.addAttribute("weather", data);
-            model.addAttribute("city", request.getCityName());
         } catch (Exception e) {
-            model.addAttribute("error", "Error retrieving data: " + e.getMessage());
+            model.addAttribute("error", "Error: " + e.getMessage());
         }
 
+        model.addAttribute("unit", unit);
         return "weather";
     }
 }

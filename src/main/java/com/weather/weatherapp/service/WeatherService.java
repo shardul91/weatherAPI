@@ -29,16 +29,6 @@ public class WeatherService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    // Simplified direct weather fetch (without geocoding)
-    public WeatherData getCurrentWeather(String city) {
-        String encodedCity = encodeCityName(city);
-        String url = String.format("%sdata/2.5/weather?q=%s&appid=%s&units=metric",
-                apiBaseUrl, encodedCity, apiKey);
-
-        ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(url, WeatherResponse.class);
-        return mapToWeatherData(response.getBody());
-    }
-
     private String encodeCityName(String cityName) {
         try {
             return URLEncoder.encode(cityName, StandardCharsets.UTF_8.toString());
@@ -47,11 +37,27 @@ public class WeatherService {
         }
     }
 
-    private WeatherData mapToWeatherData(WeatherResponse response) {
+    public WeatherData getCurrentWeather(String city, String units) {
+        String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
+        String url = String.format("%sdata/2.5/weather?q=%s&appid=%s&units=%s",
+                apiBaseUrl, encodedCity, apiKey, units);
+
+        ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(
+                url,
+                WeatherResponse.class
+        );
+
+        return mapToWeatherData(response.getBody(), units);
+    }
+
+    private WeatherData mapToWeatherData(WeatherResponse response, String units) {
         WeatherData data = new WeatherData();
         data.setTemperature(response.main.temp);
         data.setHumidity(response.main.humidity);
         data.setWindSpeed(response.wind.speed);
+        data.setUnits(units);
+        data.setTimestamp(System.currentTimeMillis());
         return data;
     }
+
 }
