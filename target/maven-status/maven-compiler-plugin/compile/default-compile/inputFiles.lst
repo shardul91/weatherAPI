@@ -1,4 +1,5 @@
 /Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/WeatherApplication.java
+/Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/advice/GlobalExceptionHandler.java
 /Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/config/OpenWeatherApiConfig.java
 /Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/config/WebConfig.java
 /Users/shardulvirkar/IdeaProjects/weatherapp/src/main/java/com/weather/weatherapp/controller/WeatherController.java

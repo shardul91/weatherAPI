@@ -1,7 +1,7 @@
 package com.weather.weatherapp.controller;
 
-import com.weather.weatherapp.model.CityRequest;
 import com.weather.weatherapp.model.WeatherData;
+import com.weather.weatherapp.model.request.CityRequest;
 import com.weather.weatherapp.service.WeatherService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/weather")
 public class WeatherController {
+
     private final WeatherService weatherService;
 
     @Autowired
@@ -28,12 +29,12 @@ public class WeatherController {
 
     @PostMapping
     public String getWeather(
-            @Valid @ModelAttribute CityRequest request,
-            BindingResult result,
+            @Valid @ModelAttribute("request") CityRequest request,
+            BindingResult bindingResult,
             @CookieValue(name = "unit", defaultValue = "metric") String unit,
             Model model
     ) {
-        if (result.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "weather";
         }
 
@@ -41,11 +42,11 @@ public class WeatherController {
             WeatherData data = weatherService.getCurrentWeather(request.getCityName(), unit);
             model.addAttribute("weather", data);
             model.addAttribute("city", request.getCityName());
-            model.addAttribute("unit", unit);
         } catch (Exception e) {
-            model.addAttribute("error", "Error: " + e.getMessage());
+            model.addAttribute("error", "Error retrieving data: " + e.getMessage());
         }
 
+        model.addAttribute("unit", unit);
         return "weather";
     }
 }

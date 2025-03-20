@@ -1,15 +1,28 @@
-package com.weather.weatherapp.model;
+package com.weather.weatherapp.model.response;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WeatherResponse {
-    public Main main;
-    public Wind wind;
+    private Main main;
+    private Wind wind;
 
     public static class Main {
-        public double temp;
-        public double humidity;
+        @JsonProperty("temp")
+        private double temp;
+        @JsonProperty("humidity")
+        private double humidity;
+
+        public double getTemp() { return temp; }
+        public double getHumidity() { return humidity; }
     }
 
     public static class Wind {
-        public double speed;
-    }
-}
+        @JsonProperty("speed")
+        private double speed;
 
+        public double getSpeed() { return speed; }
+    }
+
+    public Main getMain() { return main; }
+    public Wind getWind() { return wind; }
+}
