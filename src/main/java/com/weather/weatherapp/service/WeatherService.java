@@ -9,6 +9,7 @@ import com.weather.weatherapp.model.WeatherData;
 import com.weather.weatherapp.model.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class WeatherService {
         }
     }
 
+    @Cacheable(value = "weatherData", key = "{#city, #units}")
     public WeatherData getCurrentWeather(String city, String units) {
         String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
         String url = String.format("%sdata/2.5/weather?q=%s&appid=%s&units=%s",

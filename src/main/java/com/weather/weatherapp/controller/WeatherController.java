@@ -30,7 +30,7 @@ public class WeatherController {
     public String getWeather(
             @Valid @ModelAttribute CityRequest request,
             BindingResult result,
-            @CookieValue(defaultValue = "metric") String unit,
+            @CookieValue(name = "unit", defaultValue = "metric") String unit,
             Model model
     ) {
         if (result.hasErrors()) {
@@ -38,16 +38,14 @@ public class WeatherController {
         }
 
         try {
-            WeatherData data = weatherService.getCurrentWeather(
-                    request.getCityName(),
-                    unit
-            );
+            WeatherData data = weatherService.getCurrentWeather(request.getCityName(), unit);
             model.addAttribute("weather", data);
+            model.addAttribute("city", request.getCityName());
+            model.addAttribute("unit", unit);
         } catch (Exception e) {
             model.addAttribute("error", "Error: " + e.getMessage());
         }
 
-        model.addAttribute("unit", unit);
         return "weather";
     }
 }
